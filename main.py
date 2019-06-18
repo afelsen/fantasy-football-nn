@@ -73,13 +73,10 @@ def main():
 
     prev = names[0]
     j = 0
-    print(prev)
     for i in range(len(a)):
 
         if names[i] != prev:
-            print(names[i])
             singlenames.append(names[i-1])
-
 
 
             #Every combination of data
@@ -140,9 +137,6 @@ def main():
     datanew = np.asarray(datanew)
     labelsnew = np.asarray(labelsnew)
     datanew18 = np.asarray(datanew18)
-
-    print(datanew.shape)
-    print(labelsnew.shape)
 
 
     ######End of organizing data#######
