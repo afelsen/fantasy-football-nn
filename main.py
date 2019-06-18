@@ -51,7 +51,7 @@ def main():
 
     #Separate labels (fantasy points)
     temp = np.hsplit(a,[5,8,50])
-    a = np.hstack((temp[0],temp[2]))
+    a = np.hstack((temp[0],temp[1],temp[2]))
     a = a.astype(float)
     print(a)
 
@@ -63,6 +63,8 @@ def main():
 
     #Group data by individual
     singlenames = []
+
+    dataall = []
 
     data = []
     labels = []
@@ -78,17 +80,28 @@ def main():
             print(names[i])
             singlenames.append(names[i-1])
 
+
+
+            #Every combination of data
+            # result = np.zeros((22,22))
+            # chunk = a[j:i-1,:]
+            # result[:chunk.shape[0],:chunk.shape[1]] = chunk
+            # data.append(result)
+
+
+            #Data until 2017
             result = np.zeros((22,22))
             chunk = a[j:i-1,:]
             result[:chunk.shape[0],:chunk.shape[1]] = chunk
             data.append(result)
 
+            labels.append(labelsT[i-1])
+
+            #Data until 2018
             result = np.zeros((22,22))
             chunk = a[j:i,:]
             result[:chunk.shape[0],:chunk.shape[1]] = chunk
             data18.append(result)
-
-            labels.append(labelsT[i-1])
 
             j = i
             prev = names[i]
@@ -159,11 +172,10 @@ def main():
         print("Training Complete");
 
 
-    #Test The Bot
+    #Test The Bot - For 2018 Fantasy Points
     print("Testing The Bot");
     accum = 0
     runs = 0
-
 
     namesT = []
     guessesT = []

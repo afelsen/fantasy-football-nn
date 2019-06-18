@@ -22,7 +22,7 @@ class FantasyScoreNN():
         self.mObservationSpaceSize=iObservationSpaceSize;
         self.mActionSpaceSize=iActionSpaceSize;
         #Checks if we already have a Pre-Trained Modal Present
-        if(os.path.isfile(self.cLOADBOTPATH)):
+        if(os.path.isfile(self.cLOADBOTPATH) and 0):
             #IF There is Use that Modal
             self.mModel = keras.models.load_model(self.cLOADBOTPATH);
             self.mDoesRequireTraining=False;
