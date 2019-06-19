@@ -280,7 +280,7 @@ class Data():
     def drawvisualization(self,model):
         ####Saliency Map and Graphic#####
         columns = 4
-        rows = len(self.datanew)//columns + 1
+        rows = len(self.datanew)//columns + (len(self.datanew)//columns)%(len(self.datanew)//columns-1)
 
         print(columns*rows)
 
@@ -374,6 +374,8 @@ class Data():
 
 
 def main():
+
+
     df=pd.read_csv('QBdata.csv', sep=',',header=None)
     a = df.values
 
@@ -384,7 +386,6 @@ def main():
     data.trainNN()
 
     data.testNN()
-
 
     #Draw visualization
     model = keras.models.load_model("QBFantasyNNModel.h5");
