@@ -10,8 +10,10 @@ import matplotlib.pyplot as plt
 
 
 class Data():
-    def __init__(self,dfvalues):
+    def __init__(self,dfvalues,modelname):
         self.a = dfvalues
+        self.modelname = modelname
+        self.model = keras.models.load_model(modelname)
 
     def parseData(self):
         a = self.a
@@ -184,7 +186,7 @@ class Data():
         self.testdata18 = self.testdata18[...,np.newaxis]
         self.singlenamesnew = self.singlenamesnew
 
-        vBot=FantasyScoreNN((22,22,1),2,self.traindata,self.trainlabels);
+        vBot=FantasyScoreNN((22,22,1),2,self.traindata,self.trainlabels, self.modelname);
 
         #If the Bot Requires Training Call Train Function To Train
         if(vBot.mDoesRequireTraining):
@@ -194,7 +196,7 @@ class Data():
 
     def testNN(self):
 
-        vBot=FantasyScoreNN((22,22,1),2,self.traindata,self.trainlabels);
+        vBot=FantasyScoreNN((22,22,1),2,self.traindata,self.trainlabels,self.modelname);
 
         #Test The Bot - For 2018 Fantasy Points
         print("Testing The Bot");
@@ -277,7 +279,7 @@ class Data():
         print(df)
 
 
-    def drawvisualization(self,model):
+    def drawvisualization(self):
         ####Saliency Map and Graphic#####
         columns = 4
 
@@ -292,7 +294,7 @@ class Data():
 
             #Image
             example = self.datanew18[i]
-            grads = visualize_saliency(model, -1, filter_indices = 0, seed_input=example[...,np.newaxis])
+            grads = visualize_saliency(self.model, -1, filter_indices = 0, seed_input=example[...,np.newaxis])
 
 
             #Names label
@@ -371,17 +373,18 @@ class Data():
 
         plt.suptitle("QB Fantasy Football Predictions")
 
-        plt.savefig('QB-visualization.png', dpi=750)
+        plt.savefig('Visualizations/QB-visualization.png', dpi=750)
 
 
 def main():
 
 
-    df=pd.read_csv('QBdata.csv', sep=',',header=None)
+    df=pd.read_csv('Data/QBdata.csv', sep=',',header=None)
     a = df.values
 
+    modelname = "Models/QBFantasyNNModel.h5"
 
-    data = Data(a)
+    data = Data(a,modelname)
     data.parseData()
 
     data.trainNN()
@@ -389,6 +392,5 @@ def main():
     data.testNN()
 
     #Draw visualization
-    model = keras.models.load_model("QBFantasyNNModel.h5");
-    data.drawvisualization(model)
+    data.drawvisualization()
 main()
