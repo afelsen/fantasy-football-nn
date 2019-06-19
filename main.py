@@ -279,16 +279,33 @@ class Data():
         print(df)
 
 
-    def drawvisualization(self):
+    def drawvisualization(self, position):
         ####Saliency Map and Graphic#####
         columns = 4
 
 
-        rows = len(self.datanew)//columns
-        if len(self.datanew)%columns != 0:
-            rows += 1
+        rows = len(self.datanew)//columns + 1
 
-        fig = plt.figure()
+        if position == "QB":
+            fig = plt.figure()
+            padding = -15
+            dpi = 750
+        elif position == "RB":
+            fig = plt.figure(figsize = (11,11))
+            padding = -26
+            dpi = 500
+
+        elif position == "WR":
+            fig = plt.figure(figsize = (11,11))
+            padding = -26
+            dpi = 500
+
+        elif position == "TE":
+            fig = plt.figure(figsize = (10,10))
+            padding = -18
+            dpi = 750
+        else:
+            raise Exception
 
         for i in range(columns*(rows-1) + len(self.datanew)%columns):
 
@@ -317,6 +334,9 @@ class Data():
             subplot.set_xticklabels(labels, fontsize = 1, rotation = 90)
             subplot.xaxis.tick_top()
             subplot.tick_params(axis=u'both', which=u'both',length=0)
+
+
+
             subplot.tick_params(axis='x', pad=-15, colors = "white")
 
 
@@ -371,18 +391,21 @@ class Data():
 
         plt.axis('off')
 
-        plt.suptitle("QB Fantasy Football Predictions")
+        plt.suptitle(position + " Fantasy Football Predictions")
 
-        plt.savefig('Visualizations/QB-visualization.png', dpi=750)
+        plt.savefig("Visualizations/" + position + "-visualization.png", dpi=dpi)
 
 
 def main():
 
+    positions = ["QB", "RB", "WR", "TE"]
+    position = positions[3]
 
-    df=pd.read_csv('Data/QBdata.csv', sep=',',header=None)
+
+    df=pd.read_csv('Data/' + position + 'data.csv', sep=',',header=None)
     a = df.values
 
-    modelname = "Models/QBFantasyNNModel.h5"
+    modelname = "Models/" + position + "FantasyNNModel.h5"
 
     data = Data(a,modelname)
     data.parseData()
@@ -392,5 +415,5 @@ def main():
     data.testNN()
 
     #Draw visualization
-    data.drawvisualization()
+    data.drawvisualization(position)
 main()
