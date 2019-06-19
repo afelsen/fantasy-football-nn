@@ -280,14 +280,15 @@ class Data():
     def drawvisualization(self,model):
         ####Saliency Map and Graphic#####
         columns = 4
-        rows = len(self.datanew)//columns + (len(self.datanew)//columns)%(len(self.datanew)//columns-1)
 
-        print(columns*rows)
 
+        rows = len(self.datanew)//columns
+        if len(self.datanew)%columns != 0:
+            rows += 1
 
         fig = plt.figure()
 
-        for i in range(columns*(rows-1) + 2):
+        for i in range(columns*(rows-1) + len(self.datanew)%columns):
 
             #Image
             example = self.datanew18[i]
