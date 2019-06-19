@@ -12,7 +12,7 @@ import numpy as np
 
 class FantasyScoreNN():
     cGOODGAMESCORETHRESHOLD=400;
-    cLOADBOTPATH="FantasyNNModel.h5";
+    cLOADBOTPATH="QBFantasyNNModel.h5";
     def __init__(self,iObservationSpaceSize,iActionSpaceSize, data, labels):
         print(iObservationSpaceSize)
 
@@ -31,11 +31,11 @@ class FantasyScoreNN():
             #Simple Model With Fully Connected Layers: Input Is The Observations Output is a Value between 0 To 1
             self.mModel = Sequential();
 
-            self.mModel.add(Conv2D(16, activation='relu',padding='same',kernel_size=(5, 5),input_shape=self.mObservationSpaceSize));
-            self.mModel.add(Conv2D(8, activation='relu',padding='same',kernel_size=(5, 5)));
+            self.mModel.add(Conv2D(22, activation='relu',padding='same',kernel_size=(3, 3),input_shape=self.mObservationSpaceSize));
+            self.mModel.add(Conv2D(10, activation='relu',padding='same',kernel_size=(5, 5)));
 
             self.mModel.add(Flatten())
-            self.mModel.add(Dense(8, activation='relu'));
+            self.mModel.add(Dense(64, activation='relu'));
             self.mModel.add(Dense(1, activation='linear'));
             self.mModel.compile(loss='mse', optimizer=Adam());
 
@@ -74,7 +74,7 @@ class FantasyScoreNN():
         vTrainingLabels = self.labels
 
         #This Is Where Model IS Trained
-        self.mModel.fit(vTrainingData,vTrainingLabels,epochs=100);
+        self.mModel.fit(vTrainingData,vTrainingLabels,epochs=150);
         #Saving The Trained Model
         self.mModel.save(self.cLOADBOTPATH);
         self.mDoesRequireTraining=False;
