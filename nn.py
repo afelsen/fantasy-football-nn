@@ -23,7 +23,7 @@ class FantasyScoreNN():
         self.mObservationSpaceSize=iObservationSpaceSize;
         self.mActionSpaceSize=iActionSpaceSize;
         #Checks if we already have a Pre-Trained Modal Present
-        if(os.path.isfile(self.cLOADBOTPATH)):
+        if(os.path.isfile(self.cLOADBOTPATH) and 0):
             #IF There is Use that Modal
             self.mModel = keras.models.load_model(self.cLOADBOTPATH);
             self.mDoesRequireTraining=False;
@@ -55,27 +55,11 @@ class FantasyScoreNN():
         vTrainingDataFeatures = []
         vTrainingDataResults = []
 
-        # vAllActions=vEnv.guess(500,vRandomBot);
-        # for i in range(len(vAllActions)):
-        #     if abs(vAllActions[i]-self.labels[i]) < 100:
-        #         vTrainingDataFeatures.append(self.data[i])
-        #         vTrainingDataResults.append(vAllActions[i])
-
-
-
-        #Input Had To Be A NumPy Array
-        # vTrainingData=np.array(vTrainingDataFeatures);
-        # vTrainingLabels=np.array(vTrainingDataResults);
-        #
-        # print(vTrainingData)
-        # print(vTrainingLabels)
-
-
         vTrainingData = self.data
         vTrainingLabels = self.labels
 
         #This Is Where Model IS Trained
-        self.mModel.fit(vTrainingData,vTrainingLabels,epochs=150);
+        self.mModel.fit(vTrainingData,vTrainingLabels,epochs=300);
         #Saving The Trained Model
         self.mModel.save(self.cLOADBOTPATH);
         self.mDoesRequireTraining=False;

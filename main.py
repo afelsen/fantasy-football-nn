@@ -24,7 +24,7 @@ class Data():
 
 
         #conserve the first two rows
-        b = a[:2,:]
+        # b = a[:2,:]
 
         #Change year to integer
         a[:,2] = a[:,2].astype(int)
@@ -59,8 +59,6 @@ class Data():
         labelsT = temp[1][:,0]
         labelsT = labelsT.astype(float)
 
-        print(b)
-
 
         #Group data by individual
         singlenames = []
@@ -81,14 +79,17 @@ class Data():
                 singlenames.append(names[i-1])
 
 
-                #Every combination of data
+                #Every combination of data (until 2016)
                 for x in range(j,i-2):
                     result = np.zeros((22,22))
                     chunk = a[j:x,:]
+
                     result[:chunk.shape[0],:chunk.shape[1]] = chunk
                     dataall.append(result)
 
                     labelsall.append(labelsT[x])
+
+
 
 
                 #Data until 2017
@@ -292,7 +293,7 @@ class Data():
             dpi = 750
         elif position == "RB":
             fig = plt.figure(figsize = (11,11))
-            padding = -26
+            padding = -16
             dpi = 500
 
         elif position == "WR":
@@ -302,7 +303,7 @@ class Data():
 
         elif position == "TE":
             fig = plt.figure(figsize = (10,10))
-            padding = -18
+            padding = -22
             dpi = 750
         else:
             raise Exception
@@ -334,10 +335,7 @@ class Data():
             subplot.set_xticklabels(labels, fontsize = 1, rotation = 90)
             subplot.xaxis.tick_top()
             subplot.tick_params(axis=u'both', which=u'both',length=0)
-
-
-
-            subplot.tick_params(axis='x', pad=-15, colors = "white")
+            subplot.tick_params(axis='x', pad=padding, colors = "white")
 
 
             #Label each row
@@ -399,8 +397,7 @@ class Data():
 def main():
 
     positions = ["QB", "RB", "WR", "TE"]
-    position = positions[3]
-
+    position = positions[2]
 
     df=pd.read_csv('Data/' + position + 'data.csv', sep=',',header=None)
     a = df.values
