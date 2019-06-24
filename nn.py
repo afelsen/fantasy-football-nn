@@ -40,14 +40,6 @@ class FantasyScoreNN():
             self.mModel.add(Dense(1, activation='linear'));
             self.mModel.compile(loss='mse', optimizer=Adam());
 
-
-            # self.mModel.add(Dense(32, activation='relu', input_shape=self.mObservationSpaceSize));
-            # self.mModel.add(Dense(16, activation='relu'));
-            # self.mModel.add(Dense(8, activation='relu'));
-            # self.mModel.add(Dense(4, activation='relu'));
-            # self.mModel.add(Flatten())
-            # self.mModel.add(Dense(1, activation='linear' ));
-            # self.mModel.compile(loss='mse', optimizer=Adam());
             self.mDoesRequireTraining=True;
     def Train(self):
         #Run With RandomBot

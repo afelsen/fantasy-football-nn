@@ -2,7 +2,7 @@
 #### Created by Adiel Felsen
 
 ## Description
-This neural network is used to predict [fantasy football](https://en.wikipedia.org/wiki/Fantasy_football_(American)) scores for
+This neural network predicts [fantasy football](https://en.wikipedia.org/wiki/Fantasy_football_(American) scores (standard scoring) for the quarterback (QB), running back (RB), wide receiver (WR) and tight end (TE) positions.
 
 ## Resources
 * This program uses [keras](https://keras.io/) to constuct the neural network
@@ -12,7 +12,34 @@ This neural network is used to predict [fantasy football](https://en.wikipedia.o
 
 ## Neural Network Training
 
-## Neural Network Testing
+
+** Training Data **
+
+The training data is the statistics of each NFL player (in the relevant position) from 1980 to 2016 and is sourced from pro-football-reference.com
+* These statistics include: Rank (Since 1980), Year, Age, Games Played, Games Started, FantPt (standard), FantPt (PPR), FantPt/G (standard), FantPt/G (PPR), Cmp, P-Att, P-Yds, P-TD, Int, Ru-Att, Ru-Yds, Ru-TD, Rec, Rec-Yds, Rec-TD, Fmb)
+* Each player's career statistics are divided to generate more training data
+  * For example, if a player played from 1990 - 1992, his statistics would be represented as three data points: 1990, 1990-1991 and 1990-1992
+* Each data point is padded with zeros to make its shape (22,22)
+
+** Structure and Training **
+
+All positions are trained with the same sequential network structure:
+* Two convolutional layers (filters = 22 and 10 respectively)
+* A flatten layer
+* Two dense layers (filters = 64 and 1 respectively)
+
+For the current models (in Models folder) the epochs vary, to account for different training data sizes:
+* QB position is trained for 300 epochs
+* TE position is trained for 200 epochs
+* WR and RB positions are trained for 150 epochs
+
+
+## Neural Network Testing and Predictions
+
+The neural network is tested with 2017 player data and 2018 labels.
+
+Predictions are based on 2018 data. Predictions do not include any players who were not in the NFL in 2017
+
 
 
 ## Explanation of Visualizations
