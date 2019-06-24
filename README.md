@@ -13,7 +13,7 @@ This neural network predicts [fantasy football](https://en.wikipedia.org/wiki/Fa
 ## Neural Network Training
 
 
-** Training Data **
+#### Training Data ####
 
 The training data is the statistics of each NFL player (in the relevant position) from 1980 to 2016 and is sourced from pro-football-reference.com
 * These statistics include: Rank (Since 1980), Year, Age, Games Played, Games Started, FantPt (standard), FantPt (PPR), FantPt/G (standard), FantPt/G (PPR), Cmp, P-Att, P-Yds, P-TD, Int, Ru-Att, Ru-Yds, Ru-TD, Rec, Rec-Yds, Rec-TD, Fmb)
@@ -21,7 +21,7 @@ The training data is the statistics of each NFL player (in the relevant position
   * For example, if a player played from 1990 - 1992, his statistics would be represented as three data points: 1990, 1990-1991 and 1990-1992
 * Each data point is padded with zeros to make its shape (22,22)
 
-** Structure and Training **
+#### Structure and Training ####
 
 All positions are trained with the same sequential network structure:
 * Two convolutional layers (filters = 22 and 10 respectively)
@@ -36,11 +36,33 @@ For the current models (in Models folder) the epochs vary, to account for differ
 
 ## Neural Network Testing and Predictions
 
-The neural network is tested with 2017 player data and 2018 labels.
+The neural network is tested with 2017 player data and 2018 labels. The results for each model is as follows:
+* QB Model
+
+   * Average Ranking Difference: 10.814814814814815
+   * Median Ranking Difference: 7.5
+   * Average Score Difference: 75.32401837596187
+   * Median Score Difference: 60.54140167236329
+
+* RB Model
+   * Average Ranking Difference: 25.81896551724138
+   * Median Ranking Difference: 22.5
+   * Average Score Difference: 51.20686644408209
+   * Median Score Difference: 39.091397857666024
+
+* WR Model
+   * Average Ranking Difference: 28.589147286821706
+   * Median Ranking Difference: 24.0
+   * Average Score Difference: 43.87782199133274
+   * Median Score Difference: 34.15196533203125
+
+* TE Model
+  * Average Ranking Difference: 17.82278481012658
+  * Median Ranking Difference: 13.0
+  * Average Score Difference: 27.06946094292629
+  * Median Score Difference: 17.481335449218747
 
 Predictions are based on 2018 data. Predictions do not include any players who were not in the NFL in 2017
-
-
 
 ## Explanation of Visualizations
 The players are organized in order of their 2019 ranking.

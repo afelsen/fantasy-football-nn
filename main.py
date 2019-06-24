@@ -201,8 +201,7 @@ class Data():
 
         #Test The Bot - For 2018 Fantasy Points
         print("Testing The Bot");
-        accum = 0
-        runs = 0
+        diffArray = []
 
         namesT = []
         guessesT = []
@@ -222,10 +221,11 @@ class Data():
             diff = abs(action-self.testlabels[i])
             print("Difference:",diff)
             print()
-            runs += 1
-            accum += diff
 
-        print(accum/runs)
+            diffArray.append(diff)
+
+        diffArray = np.asarray(diffArray)
+
         print("Testing Complete");
 
         self.pointsG = guessesT
@@ -243,10 +243,15 @@ class Data():
         print(df)
 
 
-        averagediff = np.mean(np.abs(self.guessesT - self.actualT))
-        mediandiff = np.median(np.abs(self.guessesT - self.actualT))
-        print("Average Ranking Difference:",averagediff)
-        print("Median Ranking Difference:",mediandiff)
+        averagediffRank = np.mean(np.abs(self.guessesT - self.actualT))
+        mediandiffRank = np.median(np.abs(self.guessesT - self.actualT))
+        print("Average Ranking Difference:",averagediffRank)
+        print("Median Ranking Difference:",mediandiffRank)
+
+        averagediffScore = np.mean(diffArray)
+        mediandiffScore = np.median(diffArray)
+        print("Average Score Difference:",averagediffScore)
+        print("Median Score Difference:",mediandiffScore)
 
 
 
@@ -397,7 +402,7 @@ class Data():
 def main():
 
     positions = ["QB", "RB", "WR", "TE"]
-    position = positions[2]
+    position = positions[3]
 
     df=pd.read_csv('Data/' + position + 'data.csv', sep=',',header=None)
     a = df.values
