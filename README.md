@@ -84,7 +84,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 * RB Model
 
 | 1. Frank Gore: 431.41 |2. Melvin Gordon: 349.33 |3. James Conner: 345.88 |4. Alvin Kamara: 239.34 |5. Todd Gurley: 225.7 |
-|---|
+|---|---|---|---|---|
 | 6. Ezekiel Elliott: 214.83 |7. Kareem Hunt: 205.62 |8. James White: 204.63 |9. Mark Ingram: 192.95 |10. Leonard Fournette: 190.35 |
 | 11. Tevin Coleman: 189.85 |12. Joe Mixon: 188.47 |13. Marlon Mack: 181.27 |14. David Johnson: 178.81 |15. Devonta Freeman: 165.32 |
 | 16. Jay Ajayi: 161.0 |17. Tarik Cohen: 160.99 |18. Jordan Howard: 160.74 |19. T.J. Yeldon: 159.01 |20. Aaron Jones: 157.87 |
@@ -112,7 +112,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 * WR Model
 
 | 1. Antonio Brown: 230.29 |2. JuJu Smith-Schuster: 223.48 |3. Michael Thomas: 191.48 |4. Keenan Allen: 172.18 |5. Davante Adams: 172.18 |
-|---|
+|---|---|---|---|---|
 | 6. Kenny Golladay: 168.43 |7. Adam Thielen: 166.6 |8. Mohamed Sanu: 163.02 |9. Amari Cooper: 161.8 |10. Robert Woods: 160.23 |
 | 11. Doug Baldwin: 147.07 |12. Chris Godwin: 145.35 |13. Justin Hardy: 142.18 |14. A.J. Green: 141.43 |15. DeAndre Hopkins: 141.22 |
 | 16. Demaryius Thomas: 140.11 |17. Tyreek Hill: 139.01 |18. Sterling Shepard: 137.52 |19. Trent Taylor: 133.88 |20. Seth Roberts: 133.63 |
@@ -142,7 +142,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 * TE Model
 
 | 1. George Kittle: 141.81 |2. Rob Gronkowski: 131.5 |3. Eric Ebron: 117.61 |4. Zach Ertz: 104.06 |5. Delanie Walker: 95.39 |
-|---|
+|---|---|---|---|---|
 | 6. Antonio Gates: 92.47 |7. David Njoku: 91.76 |8. Evan Engram: 90.53 |9. Charles Clay: 90.2 |10. O.J. Howard: 86.08 |
 | 11. Austin Hooper: 85.37 |12. Josh Hill: 70.21 |13. Blake Jarwin: 64.46 |14. Kyle Rudolph: 64.34 |15. Cameron Brate: 63.61 |
 | 16. Ben Watson: 63.3 |17. C.J. Uzomah: 60.93 |18. Jimmy Graham: 60.76 |19. Travis Kelce: 54.99 |20. Gerald Everett: 51.21 |
