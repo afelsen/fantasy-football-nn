@@ -69,7 +69,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 * QB Model
 
 | 1. Tom Brady: 447.78 |2. Cam Newton: 385.05 |3. Deshaun Watson: 328.59 |4. Matt Ryan: 326.57 |5. Drew Brees: 312.18 |
-|---|
+|---|---|---|---|---|
 | 6. Aaron Rodgers: 305.21 |7. Russell Wilson: 303.53 |8. Jameis Winston: 297.53 |9. Ben Roethlisberger: 286.06 |10. Andy Dalton: 279.34 |
 | 11. Mitchell Trubisky: 268.95 |12. Philip Rivers: 266.37 |13. Kirk Cousins: 265.39 |14. Eli Manning: 251.18 |15. Derek Carr: 225.97 |
 | 16. Ryan Fitzpatrick: 225.95 |17. Matthew Stafford: 220.65 |18. Jared Goff: 220.65 |19. Joe Flacco: 215.46 |20. Brock Osweiler: 204.42 |
