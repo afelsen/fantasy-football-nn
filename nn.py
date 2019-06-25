@@ -11,10 +11,8 @@ import numpy as np
 
 
 class FantasyScoreNN():
-    cGOODGAMESCORETHRESHOLD=400;
     def __init__(self,iObservationSpaceSize,iActionSpaceSize, data, labels, modelname):
-        print(iObservationSpaceSize)
-
+        
         self.cLOADBOTPATH=modelname;
 
         #Observations are The Input For Our Network So Their Size Is Improtant
