@@ -4,7 +4,7 @@
 #### Created by Adiel Felsen
 
 ## Description
-This neural network predicts [fantasy football](https://en.wikipedia.org/wiki/Fantasy_football_(American) scores (standard scoring) for the quarterback (QB), running back (RB), wide receiver (WR) and tight end (TE) positions.
+This neural network predicts [fantasy football](https://en.wikipedia.org/wiki/Fantasy_football_(American)) scores (standard scoring) for the quarterback (QB), running back (RB), wide receiver (WR) and tight end (TE) positions.
 
 ## Resources
 * This program uses [keras](https://keras.io/) to constuct the neural network
