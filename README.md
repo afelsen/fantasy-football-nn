@@ -69,7 +69,7 @@ The neural network is tested with 2017 player data and 2018 labels. The results 
 
 Predictions are based on 2018 data. Predictions do not include any players who were not in the NFL in 2017.
 
-** QB Model **
+#### QB Model
 
 | 1. Tom Brady: 447.78 |2. Cam Newton: 385.05 |3. Deshaun Watson: 328.59 |4. Matt Ryan: 326.57 |5. Drew Brees: 312.18 |
 |---|---|---|---|---|
@@ -84,7 +84,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 | 46. Taylor Heinicke: 27.85 |47. Taysom Hill: 18.09 |48. DeShone Kizer: 6.63 |49. Chase Daniel: 5.38 |50. Joe Webb: 0.38 |
 | 51. Mike Glennon: -30.57 |52. Colt McCoy: -36.59 |53. Chad Henne: -37.36 |54. Jacoby Brissett: -59.87 | |
 
-** RB Model **
+#### RB Model
 
 | 1. Frank Gore: 431.41 |2. Melvin Gordon: 349.33 |3. James Conner: 345.88 |4. Alvin Kamara: 239.34 |5. Todd Gurley: 225.7 |
 |---|---|---|---|---|
@@ -112,7 +112,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 | 111. Cameron Artis-Payne: -9.86 |112. Kapri Bibbs: -12.94 |113. James Develin: -29.35 |114. Robert Kelley: -71.78 |115. D'Onta Foreman: -76.59 |
 | 116. Thomas Rawls: -116.46 | | | | |
 
-** WR Model **
+#### WR Model
 
 | 1. Antonio Brown: 230.29 |2. JuJu Smith-Schuster: 223.48 |3. Michael Thomas: 191.48 |4. Keenan Allen: 172.18 |5. Davante Adams: 172.18 |
 |---|---|---|---|---|
@@ -142,7 +142,7 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 | 121. JJ Nelson: 10.22 |122. Victor Bolden: 7.77 |123. Mose Frazier: 6.45 |124. Laquon Treadwell: -1.28 |125. Marcus Kemp: -4.86 |
 | 126. Bradley Marquez: -6.03 |127. Breshad Perriman: -14.01 |128. Matthew Slater: -15.92 |129. Brandon Tate: -20.0 | |
 
-** TE Model **
+#### TE Model
 
 | 1. George Kittle: 141.81 |2. Rob Gronkowski: 131.5 |3. Eric Ebron: 117.61 |4. Zach Ertz: 104.06 |5. Delanie Walker: 95.39 |
 |---|---|---|---|---|
