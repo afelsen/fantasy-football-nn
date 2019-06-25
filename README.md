@@ -36,7 +36,7 @@ For the current models (in Models folder) the epochs vary, to account for differ
 * WR and RB positions are trained for 150 epochs
 
 
-## Neural Network Testing and Predictions
+## Neural Network Testing
 
 The neural network is tested with 2017 player data and 2018 labels. The results for each model is as follows:
 * QB Model
@@ -63,6 +63,9 @@ The neural network is tested with 2017 player data and 2018 labels. The results 
   * Median Ranking Difference: 13.0
   * Average Score Difference: 27.06946094292629
   * Median Score Difference: 17.481335449218747
+
+
+## Predictions
 
 Predictions are based on 2018 data. Predictions do not include any players who were not in the NFL in 2017.
 
@@ -159,6 +162,13 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 | 71. Logan Paulsen: 5.59 |72. Johnny Mundt: 4.56 |73. Virgil Green: 3.69 |74. Matt Lengel: 1.6 |75. Clark Harris: 0.68 |
 | 76. Hakeem Valles: 0.41 |77. Clive Walford: -1.67 |78. Michael Roberts: -2.24 |79. Tyrone Swoopes: -14.31 | |
 
+## How to train a model:
+In main:
+* Change position variable to train for different positions
+
+In FantasyScoreNN:
+* Add an "and 0" to the line "if(os.path.isfile(self.cLOADBOTPATH))" to allow for retraining of a model
+* Alter the model structure or epochs to try to improve results
 
 ## Explanation of Visualizations
 The players are organized in order of their 2019 ranking.
@@ -167,14 +177,6 @@ The players are organized in order of their 2019 ranking.
     * Years are labeled on the left side, column labels are on the bottom
     * Unlabeled rows/columns are empty (filler) to make each matrix the same size
 * The 2018 Prediction, 2018 Actual Scores and 2019 prediction are on the right
-
-## How to train a model:
-In main:
-* Change position variable to train for different positions
-
-In FantasyScoreNN:
-* Add an "and 0" to the line "if(os.path.isfile(self.cLOADBOTPATH))" to allow for retraining of a model
-* Alter the model structure or epochs to try to improve results
 
 ## Visualization Examples
 <img src="Visualizations/QB-visualization.png" width="99%"/>
