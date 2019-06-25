@@ -164,10 +164,10 @@ Predictions are based on 2018 data. Predictions do not include any players who w
 
 ## How to train a model:
 In main:
-* Change position variable to train for different positions
+* Change "position" variable to train different position models
 
 In FantasyScoreNN:
-* Add an "and 0" to the line "if(os.path.isfile(self.cLOADBOTPATH))" to allow for retraining of a model
+* Add "and 0" to the line "if(os.path.isfile(self.cLOADBOTPATH))" to allow for retraining of a model
 * Alter the model structure or epochs to try to improve results
 
 ## Explanation of Visualizations
