@@ -260,6 +260,12 @@ class Data():
         print("Average Ranking Difference:",averagediffRank)
         print("Median Ranking Difference:",mediandiffRank)
 
+
+        averagediffRank40 = np.mean(np.abs(self.guessesT[:40] - self.actualT[:40]))
+        mediandiffRank40 = np.median(np.abs(self.guessesT[:40] - self.actualT[:40]))
+        print("Average Ranking Difference (Top 40):",averagediffRank40)
+        print("Median Ranking Difference (Top 40):",mediandiffRank40)
+
         averagediffScore = np.mean(diffArray)
         mediandiffScore = np.median(diffArray)
         print("Average Score Difference:",averagediffScore)
