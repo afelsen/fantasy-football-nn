@@ -12,7 +12,7 @@ import numpy as np
 
 class FantasyScoreNN():
     def __init__(self,iObservationSpaceSize,iActionSpaceSize, data, labels, modelname):
-        
+
         self.cLOADBOTPATH=modelname;
 
         #Observations are The Input For Our Network So Their Size Is Improtant

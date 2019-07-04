@@ -4,7 +4,7 @@ import pandas as pd
 def main():
 
     positions = ["QB", "RB", "WR", "TE"]
-    position = positions[0]
+    position = positions[1]
 
     df=pd.read_csv('Data/' + position + 'data.csv', sep=',',header=None)
     a = df.values
@@ -13,7 +13,6 @@ def main():
 
     data = Data(a,modelname)
     data.parseData()
-
     data.trainNN()
 
     data.testNN()

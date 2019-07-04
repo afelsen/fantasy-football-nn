@@ -8,6 +8,8 @@ from vis.visualization import visualize_saliency
 import keras
 import matplotlib.pyplot as plt
 
+from  more_itertools import unique_everseen
+
 
 class Data():
     def __init__(self,dfvalues,modelname):
@@ -134,7 +136,9 @@ class Data():
         datanew = []
         labelsnew = []
         singlenamesnew = []
+
         datanew18 = []
+        singlenamesnew18 = []
 
         dataold = []
         labelsold = []
@@ -144,11 +148,16 @@ class Data():
                 datanew.append(data[i,:,:])
                 labelsnew.append(labels[i])
                 singlenamesnew.append(singlenames[i])
-                datanew18.append(data18[i,:,:])
 
             else:
                 dataold.append(data[i,:,:])
                 labelsold.append(labels[i])
+
+        for i in range(len(data18)):
+            if len(np.trim_zeros(data18[i,:,1]))>0 and np.trim_zeros(data18[i,:,1])[-1] == 2018:
+                datanew18.append(data18[i,:,:])
+                singlenamesnew18.append(singlenames[i])
+
 
         self.datanew = np.asarray(datanew)
         self.labelsnew = np.asarray(labelsnew)
@@ -176,6 +185,9 @@ class Data():
         print("dataall: ", dataall.shape)
 
         self.singlenamesnew = singlenamesnew
+        self.singlenamesnew18 = singlenamesnew18
+        self.singlenamesnewall = list(unique_everseen(singlenamesnew18+singlenamesnew))
+
 
     def trainNN(self):
         #####Neural Network#####
@@ -260,10 +272,10 @@ class Data():
         guessesT18 = []
         namesT = []
 
-        for i in range(len(self.testdata)):
+        for i in range(len(self.testdata18)):
 
-            print(self.singlenamesnew[i])
-            namesT.append(self.singlenamesnew[i])
+            print(self.singlenamesnew18[i])
+            namesT.append(self.singlenamesnew18[i])
 
             action=vBot.GetAction(self.testdata18[i])
             print("Guess:",action)
@@ -303,42 +315,59 @@ class Data():
 
     def drawvisualization(self, position):
         ####Saliency Map and Graphic#####
-        columns = 4
+        columns = 5
 
 
-        rows = len(self.datanew)//columns + 1
+        rows = len(self.singlenamesnewall)//columns + 1
 
         if position == "QB":
-            fig = plt.figure()
-            padding = -15
+            fig = plt.figure(figsize = (8.5,7))
+            padding = -20
             dpi = 750
         elif position == "RB":
-            fig = plt.figure(figsize = (11,11))
-            padding = -16
-            dpi = 500
+            fig = plt.figure(figsize = (14,14))
+            padding = -19
+            dpi = 600
 
         elif position == "WR":
-            fig = plt.figure(figsize = (11,11))
-            padding = -26
-            dpi = 500
+            fig = plt.figure(figsize = (15,15))
+            padding = -16
+            dpi = 600
 
         elif position == "TE":
             fig = plt.figure(figsize = (10,10))
-            padding = -22
+            padding = -20
             dpi = 750
         else:
             raise Exception
 
-        for i in range(columns*(rows-1) + len(self.datanew)%columns):
-
-            #Image
-            example = self.datanew18[i]
-            grads = visualize_saliency(self.model, -1, filter_indices = 0, seed_input=example[...,np.newaxis])
+        i = 0
+        h = 0
+        for name in self.singlenamesnewall:
 
 
             #Names label
-            subplot = fig.add_subplot(rows, columns, self.guessesT18[i])
-            subplot.set_ylabel(self.singlenamesnew[i],fontsize = 5, rotation = 35, labelpad=20)
+            if name in self.singlenamesnew18:
+                subplot = fig.add_subplot(rows, columns,self.guessesT18[h])
+
+                graphicData = self.datanew18
+                indexVal = h
+
+
+            else:
+                subplot = fig.add_subplot(rows, columns,len(self.singlenamesnew18) + self.guessesT[i])
+
+                graphicData = self.datanew
+                indexVal = i
+
+
+            #Image
+
+            example = graphicData[h]
+
+            grads = visualize_saliency(self.model, -1, filter_indices = 0, seed_input=example[...,np.newaxis])
+
+            subplot.set_ylabel(name,fontsize = 5, rotation = 35, labelpad=20)
 
 
             plt.xticks(np.arange(0, 22, 1.0))
@@ -363,9 +392,9 @@ class Data():
 
             labels = [item.get_text() for item in subplot.get_xticklabels()]
 
-            for j in range(len(self.datanew[i,:,1])):
-                if self.datanew18[i,j,1] != 0:
-                    labels[j] = int(self.datanew18[i,j,1])
+            for j in range(len(graphicData[indexVal,:,1])):
+                if graphicData[indexVal,j,1] != 0:
+                    labels[j] = int(graphicData[indexVal,j,1])
                 else:
                     labels[j] = ""
 
@@ -382,28 +411,36 @@ class Data():
             hspace=0.2, wspace=0.2)
 
 
-            #Right text
-            subplot.text(2,.9, "2018 Prediction- Rk: " + str(self.guessesT[i]), size=2, ha="center",
-             transform=subplot.transAxes)
-            subplot.text(2,.78, "(Pts: " + str(round(self.pointsG[i],1)) + ")", size=2, ha="center",
-             transform=subplot.transAxes)
-
-            subplot.text(2,.6, "Actual Ranking-  Rk: " + str(self.actualT[i]), size=2, ha="center",
-              transform=subplot.transAxes)
-            subplot.text(2,.48, "(Pts: " + str(round(self.pointsA[i],1)) + ")", size=2, ha="center",
-               transform=subplot.transAxes)
 
 
-            subplot.text(2,.17, "2019 Prediction- Rk: " + str(self.guessesT18[i]), size=2, ha="center",
-              transform=subplot.transAxes, fontweight='bold')
-            subplot.text(2,.05, "(Pts: " + str(round(self.pointsG18[i],1)) + ")", size=2, ha="center",
-                transform=subplot.transAxes, fontweight='bold')
+            if name in self.singlenamesnew:
+                #Right text
+                subplot.text(2,.9, "2018 Prediction- Rk: " + str(self.guessesT[i]), size=2, ha="center",
+                 transform=subplot.transAxes)
+                subplot.text(2,.78, "(Pts: " + str(round(self.pointsG[i],1)) + ")", size=2, ha="center",
+                 transform=subplot.transAxes)
 
+                subplot.text(2,.6, "Actual Ranking-  Rk: " + str(self.actualT[i]), size=2, ha="center",
+                  transform=subplot.transAxes)
+                subplot.text(2,.48, "(Pts: " + str(round(self.pointsA[i],1)) + ")", size=2, ha="center",
+                   transform=subplot.transAxes)
+
+                i += 1
+
+            if name in self.singlenamesnew18:
+
+                subplot.text(2,.17, "2019 Prediction- Rk: " + str(self.guessesT18[h]), size=2, ha="center",
+                  transform=subplot.transAxes, fontweight='bold')
+                subplot.text(2,.05, "(Pts: " + str(round(self.pointsG18[h],1)) + ")", size=2, ha="center",
+                    transform=subplot.transAxes, fontweight='bold')
+
+                h += 1
 
             plt.imshow(example)
             plt.imshow(grads, alpha=.6)
 
-        subplot = fig.add_subplot(rows, columns, i+2)
+        subplot = fig.add_subplot(rows, columns, len(self.singlenamesnewall)+1)
+
 
         plt.xticks([])
         plt.yticks([])
