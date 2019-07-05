@@ -36,31 +36,39 @@ For the current models (in Models folder) the epochs vary to account for differe
 
 ## Neural Network Testing
 
-The neural network is tested with 2017 player data and 2018 labels. The results for each model is as follows:
+The neural network is tested with 2017 player data and 2018 labels. Data for the ESPN comparisons are from the [ESPN Fantasy Football Draft Kit](https://g.espncdn.com/s/ffldraftkit/18/NFLDK2018_CS_PPR300.pdf). The results for each model is as follows:
 * QB Model
 
-   * Average Ranking Difference: 10.814814814814815
+   * Average Ranking Difference: 10.81
+      * (Average Ranking Difference ESPN: 7.5)
    * Median Ranking Difference: 7.5
-   * Average Score Difference: 75.32401837596187
-   * Median Score Difference: 60.54140167236329
+      * (Median Ranking Difference ESPN: 8.0)
+   * Average Score Difference: 75.32
+   * Median Score Difference: 60.54
 
 * RB Model
-   * Average Ranking Difference: 25.81896551724138
+   * Average Ranking Difference: 25.82
+      * (Average Ranking Difference ESPN: 19.37)
    * Median Ranking Difference: 22.5
-   * Average Score Difference: 51.20686644408209
-   * Median Score Difference: 39.091397857666024
+      * (Median Ranking Difference ESPN: 18.0)
+   * Average Score Difference: 51.21
+   * Median Score Difference: 39.09
 
 * WR Model
-   * Average Ranking Difference: 28.589147286821706
+   * Average Ranking Difference: 28.59
+      * (Average Ranking Difference ESPN: 20.39)
    * Median Ranking Difference: 24.0
-   * Average Score Difference: 43.87782199133274
-   * Median Score Difference: 34.15196533203125
+      * (Median Ranking Difference ESPN: 17.0)
+   * Average Score Difference: 43.88
+   * Median Score Difference: 34.15
 
 * TE Model
-  * Average Ranking Difference: 17.82278481012658
+  * Average Ranking Difference: 17.82
+      * (Average Ranking Difference ESPN: 11.09)
   * Median Ranking Difference: 13.0
-  * Average Score Difference: 27.06946094292629
-  * Median Score Difference: 17.481335449218747
+      * (Median Ranking Difference ESPN: 7.0)
+  * Average Score Difference: 27.07
+  * Median Score Difference: 17.48
 
 
 ## Predictions

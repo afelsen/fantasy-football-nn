@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 
 from  more_itertools import unique_everseen
 
+from difflib import SequenceMatcher
+
 
 class Data():
     def __init__(self,dfvalues,modelname):
@@ -260,16 +262,56 @@ class Data():
         print("Average Ranking Difference:",averagediffRank)
         print("Median Ranking Difference:",mediandiffRank)
 
-
-        averagediffRank40 = np.mean(np.abs(self.guessesT[:40] - self.actualT[:40]))
-        mediandiffRank40 = np.median(np.abs(self.guessesT[:40] - self.actualT[:40]))
-        print("Average Ranking Difference (Top 40):",averagediffRank40)
-        print("Median Ranking Difference (Top 40):",mediandiffRank40)
-
         averagediffScore = np.mean(diffArray)
         mediandiffScore = np.median(diffArray)
         print("Average Score Difference:",averagediffScore)
         print("Median Score Difference:",mediandiffScore)
+
+        ####### Finding ESPN's Ranking Difference
+        pos = self.modelname[7:9]
+
+        file = open('Data/' + pos + 'dataESPN.txt','r')
+
+        ESPNdiff = []
+        ESPNnames = []
+
+
+        i = 1
+        for line in file:
+            name = line[:-1]
+
+            max = 0
+            closest = ""
+            for n in namesT:
+                ratio = SequenceMatcher(None, name, n).ratio()
+                if ratio == 1:
+                    playerNum = namesT.index(name)
+                    ESPNdiff.append(abs(i-self.actualT[playerNum]))
+
+                    ESPNnames.append(name)
+
+
+                    break
+                elif ratio > max:
+                    max = ratio
+                    closest = n
+
+            if ratio != 1:
+                print(name, closest)
+                pass
+
+            i += 1
+
+
+        averageESPNdiffRank = np.mean(ESPNdiff)
+        medianESPNdiffRank = np.median(ESPNdiff)
+
+        print("Average Ranking Difference ESPN:",averageESPNdiffRank)
+
+        print("Median Ranking Difference ESPN:",medianESPNdiffRank)
+
+
+
 
 
 

@@ -4,7 +4,7 @@ import pandas as pd
 def main():
 
     positions = ["QB", "RB", "WR", "TE"]
-    position = positions[0]
+    position = positions[2]
 
     df=pd.read_csv('Data/' + position + 'data.csv', sep=',',header=None)
     a = df.values
