@@ -40,33 +40,33 @@ The neural network is tested with 2017 player data and 2018 labels. Data for the
 * QB Model
 
    * Average Ranking Difference: 10.81
-      * (Average Ranking Difference ESPN: 7.5)
+      * (Average Ranking Difference ESPN: 7.14)
    * Median Ranking Difference: 7.5
-      * (Median Ranking Difference ESPN: 8.0)
+      * (Median Ranking Difference ESPN: 7.0)
    * Average Score Difference: 75.32
    * Median Score Difference: 60.54
 
 * RB Model
    * Average Ranking Difference: 25.82
-      * (Average Ranking Difference ESPN: 19.37)
+      * (Average Ranking Difference ESPN: 17.51)
    * Median Ranking Difference: 22.5
-      * (Median Ranking Difference ESPN: 18.0)
+      * (Median Ranking Difference ESPN: 15.0)
    * Average Score Difference: 51.21
    * Median Score Difference: 39.09
 
 * WR Model
    * Average Ranking Difference: 28.59
-      * (Average Ranking Difference ESPN: 20.39)
+      * (Average Ranking Difference ESPN: 19.07)
    * Median Ranking Difference: 24.0
-      * (Median Ranking Difference ESPN: 17.0)
+      * (Median Ranking Difference ESPN: 17.5)
    * Average Score Difference: 43.88
    * Median Score Difference: 34.15
 
 * TE Model
   * Average Ranking Difference: 17.82
-      * (Average Ranking Difference ESPN: 11.09)
+      * (Average Ranking Difference ESPN: 8.91)
   * Median Ranking Difference: 13.0
-      * (Median Ranking Difference ESPN: 7.0)
+      * (Median Ranking Difference ESPN: 5.0)
   * Average Score Difference: 27.07
   * Median Score Difference: 17.48
 

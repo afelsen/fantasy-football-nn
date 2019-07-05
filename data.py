@@ -290,6 +290,7 @@ class Data():
 
                     ESPNnames.append(name)
 
+                    i += 1
 
                     break
                 elif ratio > max:
@@ -300,7 +301,7 @@ class Data():
                 print(name, closest)
                 pass
 
-            i += 1
+
 
 
         averageESPNdiffRank = np.mean(ESPNdiff)
